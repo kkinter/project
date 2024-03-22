@@ -1,0 +1,6 @@
+fastapi==0.110.0
+uvicorn==0.29.0
+pydantic_settings
+asyncpg
+tortoise-orm
+aerich
