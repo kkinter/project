@@ -4,5 +4,5 @@ from django.contrib import admin
 from django.urls import path
 
 urlpatterns = [
-    path(settings.ADDMIN_URL, admin.site.urls),
+    path(settings.ADMIN_URL, admin.site.urls),
 ]
