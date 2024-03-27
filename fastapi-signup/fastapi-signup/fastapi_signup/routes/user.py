@@ -12,10 +12,13 @@ from utils.helpers import hash_password, verify_hashed_password
 
 from .entry import get_user_from_token
 
+# Create a database session
 db = SessionLocal()
 
+# Create an API router
 router = APIRouter()
 
+# Define the OAuth2 password bearer scheme
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/login")
 
 
@@ -33,13 +36,18 @@ async def create_a_user(user: NewUser):
             time=datetime.now().strftime("%H:%M:%S"),
         )
 
+        print(new_user)
         db_item = db.query(User).filter(User.email == new_user.email).first()
+        print(db_item)
 
         if db_item is not None:
             raise HTTPException(
                 status_code=400, detail="User with the email already exists"
             )
 
+        print("dbdf")
+
+        # Add the new user to the database
         db.add(new_user)
         db.commit()
 
