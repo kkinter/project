@@ -204,6 +204,3 @@ async def delete_user_detail(user_id: int, token: str = Depends(oauth2_scheme)):
 
 # Export the router
 user_routes = router
-
-
-user_routes = router
