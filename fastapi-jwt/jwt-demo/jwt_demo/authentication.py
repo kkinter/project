@@ -1,16 +1,15 @@
 from datetime import datetime, timedelta
 from typing import List
 
+from database import get_db
+from db_models import User
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt
 from passlib.context import CryptContext
+from permissions.base import ModelPermission
+from permissions.roles import get_role_permissions
 from sqlalchemy.orm import Session
-
-from .database import get_db
-from .db_models import User
-from .permissions.base import ModelPermission
-from .permissions.roles import get_role_permissions
 
 
 class BearAuthException(Exception):

@@ -1,11 +1,10 @@
 from contextlib import asynccontextmanager
 
 import uvicorn
+from database import engine
+from db_models import Base
 from fastapi import FastAPI
-
-from .database import engine
-from .db_models import Base
-from .routers import items, users
+from routers import items, users
 
 description = """
 Example API

@@ -1,9 +1,8 @@
 from datetime import datetime
 from typing import Optional
 
+from permissions.roles import Role
 from pydantic import BaseModel, EmailStr
-
-from .permissions.roles import Role
 
 
 class UserSignUp(BaseModel):
@@ -28,7 +27,7 @@ class User(BaseModel):
     register_date: Optional[datetime]
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class Token(BaseModel):
@@ -48,4 +47,4 @@ class Item(ItemIn):
     id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True

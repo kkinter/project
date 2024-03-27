@@ -1,7 +1,6 @@
+import schemas as schemas
+from db_models import Item
 from sqlalchemy.orm import Session
-
-from ..db_models import Item
-from . import schemas as schemas
 
 
 def create_item(db: Session, item: schemas.ItemIn):

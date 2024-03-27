@@ -1,9 +1,8 @@
+import schemas as schemas
+from authentication import get_password_hash
+from db_models import User
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
-
-from ..authentication import get_password_hash
-from ..db_models import User
-from . import schemas as schemas
 
 
 class DuplicateError(Exception):

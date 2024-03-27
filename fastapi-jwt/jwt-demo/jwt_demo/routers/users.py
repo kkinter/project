@@ -1,14 +1,13 @@
 from typing import List
 
+from authentication import PermissionChecker, authenticate_user, create_access_token
+from database import get_db
+from database_crud import user_db_crud as db_crud
 from fastapi import APIRouter, Depends, HTTPException
 from fastapi.security import OAuth2PasswordRequestForm
+from permissions.models_permissions import Users
+from schemas import Token, User, UserSignUp, UserUpdate
 from sqlalchemy.orm import Session
-
-from ..authentication import PermissionChecker, authenticate_user, create_access_token
-from ..database import get_db
-from ..database_crud import users_db_crud as db_crud
-from ..permissions.models_permissions import Users
-from ..schemas import Token, User, UserSignUp, UserUpdate
 
 router = APIRouter(prefix="/v1")
 
