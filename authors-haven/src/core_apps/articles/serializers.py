@@ -27,9 +27,13 @@ class ArticleSerializer(serializers.ModelSerializer):
     banner_image = serializers.SerializerMethodField()
     estimated_reading_time = serializers.ReadOnlyField()
     tags = TagListField()
+    average_rating = serializers.ReadOnlyField()
     views = serializers.SerializerMethodField()
     created_at = serializers.SerializerMethodField()
     updated_at = serializers.SerializerMethodField()
+
+    def get_average_rating(self, obj):
+        return obj.average_rating()
 
     def get_views(self, obj):
         return ArticleView.objects.filter(article=obj).count()
@@ -82,6 +86,7 @@ class ArticleSerializer(serializers.ModelSerializer):
             "description",
             "body",
             "banner_image",
+            "average_rating",
             "created_at",
             "updated_at",
         ]
